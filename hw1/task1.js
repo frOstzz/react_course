@@ -1,30 +1,19 @@
-/*
-Задачи:
-1. Сортировка массива для того, чтобы цены шли по возрастающей.
-2. Сложение элементов массива, чтобы понять общую стоимость
-3. Если элемент "куплен" выкидываем его из массива 
-*/
-
 const max = (arr, num) => {
-  const sortedArr = arr => {
-    const sorted = arr.sort();
-    return sorted;
-  };
+  const sort = arr.sort((a, b) => a - b);
 
   const sumOfArr = arr => {
     const sum = arr.reduce((a, b) => a + b);
     return sum;
   };
+  const sum = sumOfArr(sort);
 
-  const sortArr = sortedArr(arr);
-  const sum = sumOfArr(sortArr);
-
-  for (let i = 0; i < sortArr.length; i += 1) {
+  for (let i = 0; i < sum; i += 1) {
+    const sum = sumOfArr(sort);
     if (sum > num) {
-      sortArr.pop();
+      sort.pop();
     }
   }
-  return sortArr.length;
+  return sort.length;
 };
 
 console.log(

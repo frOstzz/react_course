@@ -5,9 +5,8 @@ const max = (arr, num) => {
     const sum = arr.reduce((a, b) => a + b);
     return sum;
   };
-  const sum = sumOfArr(sort);
 
-  for (let i = 0; i < sum; i += 1) {
+  for (let i = 0; i < sort.length; i += 1) {
     const sum = sumOfArr(sort);
     if (sum > num) {
       sort.pop();

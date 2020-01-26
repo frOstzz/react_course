@@ -1,5 +1,5 @@
 class Counter {
-  constructor(hash) {
+  constructor(hash = {}) {
     this.initial = hash.initial ? hash.initial : 0;
     this.iStep = hash.iStep ? hash.iStep : 1;
     this.dStep = hash.dStep ? hash.dStep : 1;
@@ -18,7 +18,7 @@ class Counter {
 
     const result = document.createElement("span");
     result.className = "result";
-    result.innerHTML = "0";
+    result.innerHTML = `${this.initial}`;
 
     const dStepBtn = document.createElement("input");
     dStepBtn.type = "button";
@@ -92,13 +92,7 @@ const counter10 = new Counter({
   max: 100
 });
 
-const counter100 = new Counter({
-  initial: 0,
-  dStep: 100,
-  iStep: 100,
-  min: -400,
-  max: 1000
-});
+const counter100 = new Counter();
 
 counter1.renderResAllCouters();
 counter1.render();

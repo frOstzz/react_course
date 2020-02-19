@@ -7,6 +7,7 @@ class App extends React.Component {
     super(props);
     this.state = { people: [] };
     this.pusherInfo = this.pusherInfo.bind(this);
+    this.deleteWorker = this.deleteWorker.bind(this);
   }
 
   pusherInfo(info) {
@@ -15,11 +16,29 @@ class App extends React.Component {
     this.setState({ people: people });
   }
 
+  deleteWorker(e) {
+    let worker = [...this.state.people];
+    const target = e.target;
+    const id = target.getAttribute("data-id");
+
+    worker.splice(
+      worker.indexOf(
+        worker.find(worker => {
+          return worker.id === id;
+        })
+      ),
+      1
+    );
+    this.setState({
+      people: worker
+    });
+  }
+
   render() {
     return (
       <div>
         <Form info={this.pusherInfo} />
-        <Table people={this.state.people} />
+        <Table people={this.state.people} del={this.deleteWorker} />
       </div>
     );
   }

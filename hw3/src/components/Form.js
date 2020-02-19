@@ -1,4 +1,5 @@
 import React from "react";
+import nanoid from "nanoid";
 
 class Form extends React.Component {
   constructor(props) {
@@ -14,10 +15,13 @@ class Form extends React.Component {
   }
 
   addButton() {
+    const { name, position, contract } = this.state;
+
     let people = {
-      name: this.state.name,
-      position: this.state.position,
-      contract: this.state.contract
+      name: name,
+      position: position,
+      contract: contract,
+      id: nanoid()
     };
 
     this.props.info(people);
@@ -40,6 +44,8 @@ class Form extends React.Component {
   }
 
   render() {
+    const { name, position, contract } = this.state;
+
     return (
       <form>
         <label>
@@ -48,18 +54,14 @@ class Form extends React.Component {
             name="name"
             type="text"
             placeholder="Enter your name"
-            value={this.state.name}
+            value={name}
             onChange={this.handleChange}
           />
         </label>
         <br />
         <label>
           Position:
-          <select
-            name="position"
-            value={this.state.position}
-            onChange={this.handleChange}
-          >
+          <select name="position" value={position} onChange={this.handleChange}>
             {this.positions.map((el, i) => {
               return (
                 <option key={i} value={el.position}>
@@ -75,7 +77,7 @@ class Form extends React.Component {
           <input
             type="checkbox"
             name="contract"
-            value={this.state.contract}
+            value={contract}
             onChange={this.handleChange}
           />
         </label>
